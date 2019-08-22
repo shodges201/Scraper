@@ -30,6 +30,6 @@
     left: 0;
 }
 
-.view-notes, .table-item{
+.view-notes, .table-item, .save-article{
     cursor: pointer;
 }

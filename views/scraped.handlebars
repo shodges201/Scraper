@@ -4,16 +4,16 @@
 <table id="articles">
     <thead>
         <th>Title</th>
-        <th>View Notes</th>
+        <th>Save article</th>
         <th>Link</th>
     </thead>
     <tbody>
         {{#each articles}}
         <tr class="table-row" data-id="{{this._id}}">
             <td class="table-item">{{this.title}}</td>
-            {{!-- <td class="save-article">Save</td> --}}
-            <td class="view-notes"><a class="view-notes">View Notes</a></td>
-            <td><a href="{{this.link}}" target="_blank">Original Article</a></td>
+            <td class="save-article"><a>Save</a></td>
+            {{!-- <td class="view-notes"><a class="view-notes">View Notes</a></td> --}}
+            <td class="table-link"><a href="{{this.link}}" target="_blank">Original Article</a></td>
         </tr>
         {{/each}}
     </tbody>

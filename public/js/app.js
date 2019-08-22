@@ -1,36 +1,32 @@
 $(document).ready(() => {
 
-  $(document).mouseup(function (e) {
-    let notesBox = $("#notes-box");
-    let centerBox = $("#center-box");
-
-    if(!centerBox.is(e.target) && centerBox.has(e.target).length === 0){
-      if(centerBox.css('display') != 'none'){
-        $("#fake-background").css('display', 'none');
-        $('#center-box').fadeOut();
-      }
-    }
-    
-      if(!notesBox.is(e.target) && notesBox.has(e.target).length === 0){
-        console.log('clicked out of notesBox');
-        if(notesBox.css('display') != 'none'){
-          $('#notes-box').fadeOut();
-          $("#fake-background2").css('display', 'none');
-      }
-    }
-  });
-
   $(document).on('click', '#scrape-btn', (event) =>{
     event.preventDefault();
-    $(document.body).css('background', 'white');
     console.log('clicked');
-    $.ajax(
-      {
-        method: "GET",
-        url: "/scrape"
-      }).then((data) => {
-        window.location = '/articles';
-      })
+    window.location = '/scrape';
+  });
+
+  $(document).on('click', '#articles-btn', (event) =>{
+    event.preventDefault();
+    console.log('clicked');
+    window.location = "/articles";
+  });
+
+  $(document).on('click', '.save-article', function(event){
+    event.preventDefault();
+    let parentItem = $(this).parent();
+    let title = parentItem.children('td.table-item').text();
+    let link = parentItem.children('td.table-link').children('a').attr('href');
+    articleData = {
+      title: title,
+      link: link
+    };
+    console.log(articleData);
+    $.ajax({
+      method: "POST",
+      url: '/save/article',
+      data: {article: articleData}
+    })
   });
 
   $(document).on('click', '.table-item', function(event){
@@ -116,5 +112,28 @@ $(document).ready(() => {
         }
       });
   });
+
+  $(document).mouseup(function (e) {
+    let notesBox = $("#notes-box");
+    let centerBox = $("#center-box");
+    console.log(centerBox.css('display') !== 'none');
+    console.log(notesBox.css('display') !== 'none');
+
+    if(!centerBox.is(e.target) && centerBox.has(e.target).length === 0){
+      if(centerBox.css('display') !== 'none'){
+        $("#fake-background").css('display', 'none');
+        $('#center-box').fadeOut();
+      }
+    }
+    
+      if(!notesBox.is(e.target) && notesBox.has(e.target).length === 0){
+        console.log('clicked out of notesBox');
+        if(notesBox.css('display') !== 'none'){
+          $('#notes-box').fadeOut();
+          $("#fake-background2").css('display', 'none');
+      }
+    }
+  });
+
 
 })
