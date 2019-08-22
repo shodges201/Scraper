@@ -1,9 +1,20 @@
+<nav id="nav-bar">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo center">Scraper</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/scrape">Scrape Articles</a></li>
+        </ul>
+    </div>
+</nav>
+
 <h1 class="header">Your Articles</h1>
-<h5 class="header">Click on an item to add a note to it, or click on view notes to view your existing notes for that article.</h5>
+<h5 class="header">Click on an item to add a note to it, or click on view notes to view your existing notes for that
+    article.</h5>
 
 <table id="articles">
     <thead>
         <th>Title</th>
+        <th>New Note</th>
         <th>View Notes</th>
         <th>Link</th>
     </thead>
@@ -11,8 +22,8 @@
         {{#each articles}}
         <tr class="table-row" data-id="{{this._id}}">
             <td class="table-item">{{this.title}}</td>
-            {{!-- <td class="save-article">Save</td> --}}
-            <td class="view-notes"><a class="view-notes">View Notes</a></td>
+            <td class="table-item"><a>New Note</a></td>
+            <td class="view-notes"><a>View Notes</a></td>
             <td><a href="{{this.link}}" target="_blank">Original Article</a></td>
         </tr>
         {{/each}}

@@ -15,7 +15,7 @@ $(document).ready(() => {
   $(document).on('click', '.save-article', function(event){
     event.preventDefault();
     let parentItem = $(this).parent();
-    let title = parentItem.children('td.table-item').text();
+    let title = parentItem.children('td.table-title').text();
     let link = parentItem.children('td.table-link').children('a').attr('href');
     articleData = {
       title: title,
@@ -92,12 +92,13 @@ $(document).ready(() => {
       .then(function (data) {
         $('#fake-background2').css('display', 'initial');
         $('#notes-box').fadeIn('slow');
+        console.log('data: ')
         console.log(data);
         // The title of the article
-        $("#notes-box").append("<h2 class='header'>" + data.title + "</h2>");
-
+        $("#notes-box").append($('<h2>').addClass('header').text(data.title));
+        console.log('length : ' + data.note.length);
         // If there's a note in the article
-        if (data.note) {
+        if (data.note.length > 0) {
           // Place the title of the note in the title input
           data.note.forEach(element => {
             let note = $('<div>').addClass('row').append(
@@ -109,6 +110,10 @@ $(document).ready(() => {
             $("#notes-box").append(note);
           });
           // Place the body of the note in the body textarea
+        }
+        else{
+          let empty = $('<h5>').addClass('header').text('Add notes first!');
+          $("#notes-box").append(empty);
         }
       });
   });

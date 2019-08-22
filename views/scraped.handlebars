@@ -1,5 +1,17 @@
-<h1 class="header">Your Articles</h1>
-<h5 class="header">Click on an item to add a note to it, or click on view notes to view your existing notes for that article.</h5>
+<nav id="nav-bar">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo center">Scraper</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/articles">Saved Articles</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h1 class="header">Scraped Articles</h1>
+<h5 class="header">Click on an article's link to see the original post,
+    and if you want to come back to it, save it! Then move 
+    over to the saved articles page to add notes to the 
+    article, or view existing notes.</h5>
 
 <table id="articles">
     <thead>
@@ -10,7 +22,7 @@
     <tbody>
         {{#each articles}}
         <tr class="table-row" data-id="{{this._id}}">
-            <td class="table-item">{{this.title}}</td>
+            <td class="table-title">{{this.title}}</td>
             <td class="save-article"><a>Save</a></td>
             {{!-- <td class="view-notes"><a class="view-notes">View Notes</a></td> --}}
             <td class="table-link"><a href="{{this.link}}" target="_blank">Original Article</a></td>
