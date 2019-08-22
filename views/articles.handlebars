@@ -1,0 +1,57 @@
+<h1 class="header">Your Articles</h1>
+<h5 class="header">Click on an item to add a note to it, or click on view notes to view your existing notes for that article.</h5>
+
+<table id="articles">
+    <thead>
+        <th>Title</th>
+        <th>Notes</th>
+        <th>Link</th>
+    </thead>
+    <tbody>
+        {{#each articles}}
+        <tr class="table-row" data-id="{{this._id}}">
+            <td class="table-item" data-id="{{this._id}}">{{this.title}}</td>
+            <td class="view-notes"><a class="view-notes">View Notes</a></td>
+            <td><a href="{{this.link}}" target="_blank">Original Article</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<div id="fake-background">
+    <div id="center-box">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h1>New Note</h1>
+                </div>
+            </div>
+            <div class="row">
+                <form id="create-note" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="note-title" type="text" class="validate">
+                            <label for="note-title">Title</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="note-body" class="materialize-textarea"></textarea>
+                            <label for="note-body">Extra Note Details</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 right-align">
+                            <button id="note-btn" class="btn waves-effect">Create Note</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fake-background2">
+    <div id="notes-box">
+    </div>
+</div>
